@@ -1,0 +1,46 @@
+.Item {
+    border: 1px solid #eee;
+    text-align: left;
+    padding: 8px;
+    font-weight: bold;
+}
+.Selected {
+    font-weight: bold;
+    border: 1px solid #eee;
+    background-color: aquamarine;
+    text-align: left;
+}
+.Conversion{
+    /* padding-top: 5%; */
+    /* padding-left: auto;
+    padding-right: auto; */
+    position: relative;
+    display: inline;
+    /* background-color: white; */
+}
+.UnitValue {
+    border: 1px solid #eee;
+    text-align: right;
+    padding: 8px;
+}
+.Con {
+    background-color: aquamarine;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    margin: 16px;
+}
+
+.Table {
+    border-collapse: collapse;
+    margin: 8px;
+    width: 95%;
+}
+
+.Table td,th{
+    border: 1px solid black;
+    padding: 8px;    
+}
+.Table input{
+    width: 95%;   
+}

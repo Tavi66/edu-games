@@ -1,0 +1,104 @@
+.SideNav {
+    background-color: #727d8b;
+    color: aliceblue;
+    position: absolute;
+    display: block;
+    z-index: 1;
+    flex-direction: column;
+    width: 150px;
+    text-align: left;
+    padding-right: 16px;
+    min-height: 100%;
+    /* padding-left: 24px; */
+}
+
+.SideItem{
+    display: inline;
+}
+
+.TopItem {
+    list-style-type: none;
+    display: inline-flex;
+    padding: 8px;
+}
+.TopList{
+    margin: 0px;
+}
+
+.TopList li:hover{
+    text-decoration: none;
+    color: ghostwhite;
+    background-color: blue;
+} 
+
+.Item {
+    background-color: #727d8b;
+    list-style-type: none;
+    display: inline-flex;
+    padding: 8px;
+}
+.ActiveTab{
+    padding-left: 10px;
+    list-style-type: none;
+    display: inline-flex;
+    background-color: darkgray;
+    min-width: 100%;
+}
+.List{
+    margin: 0px;
+    padding: 0px;
+}
+
+.List li{
+    margin: 0px;
+    padding: 8px;
+    width: 150px;
+}
+.List li:hover{
+    text-decoration: none;
+    color: ghostwhite;
+    background-color: blue;
+} 
+
+
+.TopNav {
+    background-color: #559ed6;
+    display: block;
+    position: relative;
+    color: aliceblue;
+    /* padding: 10px 0px 0px 0px; */
+    text-align: center;
+}
+
+.DropDown {
+    background-color: #559ed6;
+    display: inline-block;
+    position: relative;
+    color: aliceblue;
+    /* padding: 10px 0px 0px 0px; */
+    text-align: center;
+    list-style-type: none;
+    /* display: inline-flex; */
+}
+.DropDownContent {
+    display: none;
+    text-decoration: none;
+    /* list-style-type: none; */
+}
+.DropDown:hover .DropDownContent {
+    text-decoration: none;
+    background-color: #488fc5;
+    display: block;
+    position: absolute;
+    color: aliceblue;
+    /* padding: 10px 0px 0px 0px; */
+    min-width: 70%;
+    flex-direction: column;
+    list-style-type: none;
+    z-index: 1;
+    text-align:left;
+    padding-right: 8px;
+}
+.Nav {
+    background-color: rgb(194, 194, 194);
+}
