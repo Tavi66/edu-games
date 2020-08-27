@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import PayrollCalculator from './components/Calculator/PayrollCalculator';
 import Navigation from './components/Navigation/Navigation';
+
+import BookLog from './components/Log/BookLog';
+import Hangman from './components/SightWords/Hangman';
+import Rewards from './components/Log/RewardLog';
+
+import classes from './extra.module.css';
+// import headerImg from './assets/eeveeBackground1.jpg';
+
 class App extends Component{
 
   state = {
@@ -61,12 +69,25 @@ class App extends Component{
         reloadPayroll={this.state.reloadPayroll}
         payrollSaved={this.state.payroll}
         />;
-      break;      
+      break; 
+      case 'book': mainComponent = <BookLog />;
+      break;     
+      case 'rewards': mainComponent = <Rewards />;
+      break;        
+      case 'hangman': mainComponent = <Hangman />;
+      break;        
+      
       default: ;
     }
 
     return (
     <div className="App">
+      <div className={classes.Header}>
+        {/* <img src={headerImg} alt='headerImg' className={classes.HeaderImage}/> */}
+         <h3 className={classes.HeaderText}>
+           KAILYA'S STARS 
+         </h3>
+      </div>
       <Navigation
       appType={this.state.displayApp}
       click = {this.setConversionHandler}

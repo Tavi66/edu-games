@@ -25,15 +25,27 @@ app.get('/', (request, response) => {
 });
 
 //Payroll requests
-app.get('/api/payroll',(request,response) => {
+// app.get('/api/payroll',(request,response) => {
+//     request.connection.setTimeout(1000 * 60 * 10);
+//     mongo.getPayrollDocuments(response);
+//   });
+
+// app.post('/api/payroll/add', (request, response) => {
+//     request.connection.setTimeout(1000 * 60 * 10);
+//     const record = request.body;
+//     mongo.postSinglePayroll(record);
+//   });
+
+  //booklog requests
+app.get('/api/booklog',(request,response) => {
     request.connection.setTimeout(1000 * 60 * 10);
-    mongo.getPayrollDocuments(response);
+    mongo.getBookLog(response);
   });
 
-app.post('/api/payroll/add', (request, response) => {
+app.post('/api/booklog/add', (request, response) => {
     request.connection.setTimeout(1000 * 60 * 10);
     const record = request.body;
-    mongo.postSinglePayroll(record);
+    mongo.postBookRecord(record);
   });
 
   app.get('/close', (request, response) => {

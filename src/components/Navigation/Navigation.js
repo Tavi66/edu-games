@@ -20,68 +20,20 @@ const setActiveTab = (selectedTab) => {
     // console.log('selectedTab:',selectedTab);
 }
 
-const SideNav = (props) => {
-  let classNav = classes.SideItem + ' ' + classes.Item;
-  setActiveTab(props.tab);
-    return(
-    <div className={classes.SideNav}>
-        <ul className={classes.List} id='sideNav'>
-          <li className={classNav} onClick={(event)=>props.click(event,'area')}>
-            Area
-          </li>           
-          <li className={classNav} onClick={(event)=>props.click(event,'length')}>
-            Distance/Length
-          </li>          
-          <li className={classNav} onClick={(event)=>props.click(event,'force')}>
-            Force
-          </li>
-          <li className={classNav} onClick={(event)=>props.click(event,'pressure')}>
-            Pressure
-          </li>
-          <li className={classNav} onClick={(event)=>props.click(event,'temperature')}>
-            Temperature
-          </li>
-          <li className={classNav} onClick={(event)=>props.click(event,'torque')}>
-            Torque
-          </li>
-          <li className={classNav} onClick={(event)=>props.click(event,'vacuum')}>
-            Vacuum
-          </li>
-          <li className={classNav} onClick={(event)=>props.click(event,'volume')}>
-            Volume
-          </li>
-          <li className={classNav} onClick={(event)=>props.click(event,'weight')}>
-            Weight
-          </li>
-         </ul>
-    </div> 
-    )
-
-}
-
 const NavigationMenu = (props) => {
-    let classNav = classes.DropDown + ' ' + classes.TopItem;
+    //let classNav = classes.DropDown + ' ' + classes.TopItem;
 
      let navbar =  
         <ul className={classes.TopList}>
-            <li className={classes.TopItem} onClick={(event) => props.clicked(event,'payroll')}>
-                Payroll Calculator
+         <li className={classes.TopItem} onClick={(event) => props.clicked(event,'book')}>
+                Book Log
             </li>
-            <li className={classes.TopItem} onClick={(event) => props.clicked(event,'loan')}>
-                Loan Calculator
+            <li className={classes.TopItem} onClick={(event) => props.clicked(event,'rewards')}>
+                Rewards
             </li>
-            <li className={classNav}            
-            onClick={(event) => props.clicked(event,'convert')}>
-                Conversion Calculator
-                {/* <DropDownMenu
-                click={props.click}/> */}
-            </li>
-            <li className={classes.TopItem} onClick={(event) => props.clicked(event,'scraper')}>
-                Scraper
-            </li>
-            <li className={classes.TopItem} onClick={(event) => props.clicked(event,'todo')}>
-                To-Do List
-            </li>
+            <li className={classes.TopItem} onClick={(event) => props.clicked(event,'hangman')}>
+                Hangman
+            </li>        
         </ul>
 
     return(
@@ -94,4 +46,3 @@ const NavigationMenu = (props) => {
 }
 
 export default NavigationMenu;
-export {SideNav};

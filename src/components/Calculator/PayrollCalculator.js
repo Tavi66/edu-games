@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import classes from './Calculator.module.css';
 
-const port = process.env.PORT  || 5000;
+//const port = process.env.PORT  || 5000;
 
 const DisplayPayroll = (props) => {
     const info = props.payroll;
@@ -147,7 +147,7 @@ class PayrollCalculator extends Component {
             Labor: L,
         }
 
-        this.setState({newRecord: newRecord});
+        //this.setState({newRecord: newRecord});
 
         const url = '/api/payroll/add';//this.state.baseUrl.concat('payroll/add'); 
         //add new record into database

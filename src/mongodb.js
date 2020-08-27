@@ -76,8 +76,32 @@ const postSinglePayroll = (document) => {
       });
 }
 
+//Booklog get/post
+const getBookLog = (response) => {
+  const dbo = db.db("data");
+  let documents;
+  dbo.collection("booklog").find({}).toArray( function(err, result){
+    console.log('Retrieving Documents...');
+
+    if(err) throw err;
+    //console.log('result: ',result);
+    console.log('Retrieved Documents!');
+    documents = result;
+    response.send(documents);
+  });
+    // db.close(); 
+}
+
+const postBookRecord = (document) => {
+  const dbo = db.db("data");
+  dbo.collection("booklog").insertOne(document)
+      .then( res => {
+        console.log('Added document!');
+        //  console.log(document);
+      });
+}
 exports.connect = connect;
 exports.getDb = getDb;
 exports.closeDb = closeDb;
-exports.getPayrollDocuments = getPayrollDocuments;
-exports.postSinglePayroll = postSinglePayroll;
+exports.getBookLog = getBookLog;
+exports.postBookRecord = postBookRecord;
