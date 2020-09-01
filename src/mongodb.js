@@ -1,4 +1,5 @@
-const MongoClient = require('mongodb').MongoClient;
+const mongo = require('mongodb');
+const MongoClient = mongo.MongoClient;
 
 if(process.env.NODE_ENV !== "production")
 {
@@ -47,35 +48,6 @@ const  connect  = async () => {
    console.log('mongoDB db connection closed.');
 }
 
-//Payroll get/post
-const getPayrollDocuments = (response) => {
-  const dbo = db.db("data");
-  let documents;
-  dbo.collection("payroll").find({}).toArray( function(err, result){
-    //console.log('START fetchDocuments');
-    console.log('Retrieving Documents...');
-
-    if(err) throw err;
-    //console.log('result: ',result);
-    console.log('Retrieved Documents!');
-    //console.log('END fetchDocuments');
-    documents = result;
-    response.send(documents);
-  });
-    // db.close(); 
-}
-
-const postSinglePayroll = (document) => {
-  const dbo = db.db("data");
-  dbo.collection("payroll").insertOne(document)
-      .then( res => {
-        console.log('Added document!');
-        //db.close();
-        //   console.log(res);
-        //  console.log(document);
-      });
-}
-
 //Booklog get/post
 const getBookLog = (response) => {
   const dbo = db.db("data");
@@ -89,7 +61,6 @@ const getBookLog = (response) => {
     documents = result;
     response.send(documents);
   });
-    // db.close(); 
 }
 
 const postBookRecord = (document) => {
@@ -100,8 +71,76 @@ const postBookRecord = (document) => {
         //  console.log(document);
       });
 }
+
+//ChoreLog posts/get
+const getChorelog = (response) => {
+  const dbo = db.db("data");
+  let documents; //{projection: {_id: 0} }
+  dbo.collection("chorelog").find({}).toArray( function(err, result){
+    console.log('Retrieving Documents...');
+
+    if(err) throw err;
+    //console.log('result: ',result);
+    console.log('Retrieved Documents!');
+    documents = result;
+    response.send(documents);
+  });
+}
+const findChore = (request, response) => {
+  const dbo = db.db("data");
+  const document = request.body;
+  console.log('document (findChore): ', document);
+  let documents;
+  dbo.collection("chorelog").find({}, document).toArray( function(err, result){
+    console.log('Retrieving Document...');
+
+    if(err) throw err;
+    console.log('result: ',result);
+    console.log('Retrieved Document!');
+    documents = result;
+
+    if(documents.length === 0)
+    response.send(false);
+    else
+    response.send(true);
+    //response.send(documents);
+  });
+}
+
+const postChoreRecord = (document) => {
+  const dbo = db.db("data");
+  dbo.collection("chorelog").insertOne(document)
+      .then( res => {
+        console.log('Added document!');
+        //  console.log(document);
+      });
+}
+
+const deleteChoreRecord = (document) => {
+  const dbo = db.db("data");
+  // dbo.collection("chorelog").findOne(document)
+  // .then(
+  //   res => console.log(res)
+  // )
+  // .catch(err => console.log(err));
+    console.log(document);
+
+  dbo.collection("chorelog").deleteOne(document)
+  .then(res => {
+    console.log('Deleted document!');
+  }).catch(err => console.log(err));
+  
+}
+
 exports.connect = connect;
 exports.getDb = getDb;
 exports.closeDb = closeDb;
+
+exports.findChore = findChore;
+
 exports.getBookLog = getBookLog;
+exports.getChorelog = getChorelog;
+
 exports.postBookRecord = postBookRecord;
+exports.postChoreRecord = postChoreRecord;
+exports.deleteChoreRecord = deleteChoreRecord;

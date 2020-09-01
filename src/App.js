@@ -3,11 +3,11 @@ import PayrollCalculator from './components/Calculator/PayrollCalculator';
 import Navigation from './components/Navigation/Navigation';
 
 import BookLog from './components/Log/BookLog';
+import ChoreLog from './components/Log/ChoreLog';
 import Hangman from './components/SightWords/Hangman';
 import Rewards from './components/Log/RewardLog';
 
 import classes from './extra.module.css';
-// import headerImg from './assets/eeveeBackground1.jpg';
 
 class App extends Component{
 
@@ -16,7 +16,29 @@ class App extends Component{
     updateList: true,
     payroll: [],
     reloadPayroll: true,
+    savedLog: false,
+    log: [],
+    load: true,
+    grid: [],
+    stars: 0,
   }
+
+  setStarsTotal = (props) => {
+    let total = props.chorelog.length;
+    for(let i = 0; i < props.booklog.length; i ++){
+    }
+    props.booklog.foreach(book => {
+      total += book.Reward;
+    })
+    this.setState({stars: total});
+  }
+  saveLog = (val, log) => {
+    this.setState({
+      savedLog: val,
+      log: log});
+      //console.log('booklog from BookLog.js: ', booklog);
+  }
+
   updateSelection = () => {
     this.setState({updateList: !this.state.updateList});
   }
@@ -58,6 +80,9 @@ class App extends Component{
     } else this.hideSideNav();
   }
 
+  updateLoad = () => {
+    this.setState({load: false});
+  }
   render()
   { 
     let mainComponent = null;
@@ -70,8 +95,20 @@ class App extends Component{
         payrollSaved={this.state.payroll}
         />;
       break; 
-      case 'book': mainComponent = <BookLog />;
-      break;     
+      case 'book': mainComponent = <BookLog 
+      savedBooklog={this.state.savedLog}
+      saveBooklog={this.saveLog}
+      booklog={this.state.log}
+      setStarsTotal={this.setStarsTotal}
+      />;
+      break; 
+      case 'chore': mainComponent = <ChoreLog
+      //savedChorelog={this.state.savedLog}
+      //saveChorelog={this.saveLog}
+      chorelog={this.state.log}
+      setStarsTotal={this.setStarsTotal}
+      />;
+      break;    
       case 'rewards': mainComponent = <Rewards />;
       break;        
       case 'hangman': mainComponent = <Hangman />;

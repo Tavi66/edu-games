@@ -48,7 +48,32 @@ app.post('/api/booklog/add', (request, response) => {
     mongo.postBookRecord(record);
   });
 
-  app.get('/close', (request, response) => {
+//chorelog requests
+app.get('/api/chorelog', (request, response) => {
+    request.connection.setTimeout(1000 * 60 * 10);
+  mongo.getChorelog(response);
+});
+
+app.get('/api/chorelog/find', (request, response) => {
+  mongo.findChore(request,response);
+});
+
+app.post('/api/chorelog/add', (request, response) => {
+    request.connection.setTimeout(1000 * 60 * 10);
+    const record = request.body;
+    mongo.postChoreRecord(record);
+  });
+
+app.delete('/api/chorelog/delete', (request, response) => {
+    request.connection.setTimeout(1000 * 60 * 10);
+
+    // request.params = {_id: request.body}
+    //const record = request.params;    
+    const record = request.params;    
+    mongo.deleteChoreRecord(record);
+  });
+
+app.get('/close', (request, response) => {
       mongo.closeDb();
   })
   

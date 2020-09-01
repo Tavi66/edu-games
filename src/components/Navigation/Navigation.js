@@ -1,24 +1,24 @@
 import React from 'react';
 import classes from './Navigation.module.css';
 
-const setActiveTab = (selectedTab) => {
-  const tabs = document.getElementsByClassName(classes.SideItem);
-    if(selectedTab === 'length')
-     selectedTab = 'distance/length';  //console.log(tabs);
-  for(let i = 0; i < tabs.length; i++) {
-    let tab = tabs[i].innerHTML.toLowerCase();
+// const setActiveTab = (selectedTab) => {
+//   const tabs = document.getElementsByClassName(classes.SideItem);
+//     if(selectedTab === 'length')
+//      selectedTab = 'distance/length';  //console.log(tabs);
+//   for(let i = 0; i < tabs.length; i++) {
+//     let tab = tabs[i].innerHTML.toLowerCase();
 
-    if(tab === selectedTab)
-    {    
-      tabs[i].className = tabs[i].className.replace(classes.Item,classes.ActiveTab);
-    } else
-      tabs[i].className = tabs[i].className.replace(classes.ActiveTab,classes.Item);
+//     if(tab === selectedTab)
+//     {    
+//       tabs[i].className = tabs[i].className.replace(classes.Item,classes.ActiveTab);
+//     } else
+//       tabs[i].className = tabs[i].className.replace(classes.ActiveTab,classes.Item);
          
-    // console.log(`tab[${i}]:`, tab);   
-    // console.log(`tab[${i}].className:`, tabs[i].className);   
-  }
-    // console.log('selectedTab:',selectedTab);
-}
+//     // console.log(`tab[${i}]:`, tab);   
+//     // console.log(`tab[${i}].className:`, tabs[i].className);   
+//   }
+//     // console.log('selectedTab:',selectedTab);
+// }
 
 const NavigationMenu = (props) => {
     //let classNav = classes.DropDown + ' ' + classes.TopItem;
@@ -28,10 +28,13 @@ const NavigationMenu = (props) => {
          <li className={classes.TopItem} onClick={(event) => props.clicked(event,'book')}>
                 Book Log
             </li>
-            <li className={classes.TopItem} onClick={(event) => props.clicked(event,'rewards')}>
+         <li className={classes.TopItem} onClick={(event) => props.clicked(event,'chore')}>
+                Chore Log
+            </li>            
+         <li className={classes.TopItem} onClick={(event) => props.clicked(event,'rewards')}>
                 Rewards
             </li>
-            <li className={classes.TopItem} onClick={(event) => props.clicked(event,'hangman')}>
+         <li className={classes.TopItem} onClick={(event) => props.clicked(event,'hangman')}>
                 Hangman
             </li>        
         </ul>
